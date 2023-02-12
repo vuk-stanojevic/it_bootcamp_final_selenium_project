@@ -13,11 +13,11 @@ public class LoginPage extends BasePage {
     }
 
     public WebElement getEmailInputField(){
-        return driver.findElement(By.className("name"));
+        return driver.findElement(By.name("email"));
     }
 
     public WebElement getPasswordInputField(){
-        return driver.findElement(By.className("password"));
+        return driver.findElement(By.name("password"));
     }
 
     public WebElement getLoginButton(){

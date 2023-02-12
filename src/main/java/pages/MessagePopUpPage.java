@@ -13,6 +13,7 @@ public class MessagePopUpPage extends BasePage {
         super(driver, wait);
     }
 
+//   Leaving the waiter method as a separate one, just to show the other way of using it
     public void waitUntilMessagePopUpIsVisible(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("v-snack__content")));
     }
