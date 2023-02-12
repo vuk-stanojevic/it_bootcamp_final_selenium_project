@@ -34,13 +34,15 @@ public class SignUpTests extends BaseTest {
     @Description("Test Case 3 - Verify that Sign Up page displays an error when the user already exists")
     public void checkErrorWhenUserAlreadyExists(){
         navPage.getSignUpLink().click();
+        Assert.assertTrue(driver.getCurrentUrl().contains("/signup"),
+                "The URL does not contain the '/signup' part");
         signUpPage.getNameInputField().sendKeys("Another User");
         signUpPage.getEmailInputField().sendKeys("admin@admin.com");
         signUpPage.getPasswordInputField().sendKeys("12345");
         signUpPage.getConfirmPasswordInputField().sendKeys("12345");
         signUpPage.getSignMeUpButton().click();
-        messagePopUpPage.waitUntilMessagePopUpIsVisible();
-        Assert.assertTrue(messagePopUpPage.getMessagePopUpTextElement().getText().contains("E-mail already exists"),
+        messagePopUpPage.waitUntilErrorMessagePopUpIsVisible();
+        Assert.assertTrue(messagePopUpPage.getErrorMessagePopUpTextElement().getText().contains("E-mail already exists"),
                 "The error message does not contain the 'E-mail already exists' part");
         Assert.assertTrue(driver.getCurrentUrl().contains("/signup"),
                 "The URL does not contain the '/signup' part");

@@ -36,8 +36,8 @@ public class LoginTests extends BaseTest {
         loginPage.getEmailInputField().sendKeys("non-existing-user@gmail.com");
         loginPage.getPasswordInputField().sendKeys("password123");
         loginPage.getLoginButton().click();
-        messagePopUpPage.waitUntilMessagePopUpIsVisible();
-        Assert.assertTrue(messagePopUpPage.getMessagePopUpTextElement().getText().contains("User does not exists"),
+        messagePopUpPage.waitUntilErrorMessagePopUpIsVisible();
+        Assert.assertTrue(messagePopUpPage.getErrorMessagePopUpTextElement().getText().contains("User does not exists"),
                 "The error message does not contain the 'User does not exists' [sic] part");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "The URL does not contain the '/login' part");
@@ -50,8 +50,8 @@ public class LoginTests extends BaseTest {
         loginPage.getEmailInputField().sendKeys("admin@admin.com");
         loginPage.getPasswordInputField().sendKeys("password123");
         loginPage.getLoginButton().click();
-        messagePopUpPage.waitUntilMessagePopUpIsVisible();
-        Assert.assertTrue(messagePopUpPage.getMessagePopUpTextElement().getText().contains("Wrong password"),
+        messagePopUpPage.waitUntilErrorMessagePopUpIsVisible();
+        Assert.assertTrue(messagePopUpPage.getErrorMessagePopUpTextElement().getText().contains("Wrong password"),
                 "The error message does not contain the 'Wrong password' part");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "The URL does not contain the '/login' part");
