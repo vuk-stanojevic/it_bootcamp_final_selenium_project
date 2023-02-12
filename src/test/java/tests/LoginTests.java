@@ -9,7 +9,7 @@ public class LoginTests extends BaseTest {
 
 
     @Test(priority = 1)
-    @Description("Test Case 1 - Verify that the user can load the login page")
+    @Description("Test Case 1 - Verify that the user can load the Login page")
     public void loadLoginPage(){
         navPage.getLanguageButton().click();
         navPage.getEnglishLanguageButton().click();
@@ -58,7 +58,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(priority = 5)
-    @Description("Test Case 5 - Verify that user can successfully login and is redirected to Home page")
+    @Description("Test Case 5 - Verify that user can successfully log in and is redirected to Home page")
     public void checkSuccessfulLoginHomepageRedirection() { //throws InterruptedException {
         navPage.getLoginLink().click();
         loginPage.getEmailInputField().sendKeys("admin@admin.com");
