@@ -19,6 +19,7 @@ public class CitiesPage extends BasePage {
         return driver.findElement(By.id("search"));
     }
 
+//  Making separate waiter methods, as per documentation
     public void waitUntilEditItemNewItemDialogAppears(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dlgNewEditItem")));
     }
@@ -33,6 +34,10 @@ public class CitiesPage extends BasePage {
 
     public WebElement getCancelEditNewDialogButton(){
         return driver.findElement(By.className("btnCancel"));
+    }
+
+    public WebElement getInputFieldNewEditDialog(){
+        return driver.findElement(By.name("name"));
     }
 
     public WebElement getDeleteDialogDeleteButton(){

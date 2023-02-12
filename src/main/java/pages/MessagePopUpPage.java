@@ -13,13 +13,22 @@ public class MessagePopUpPage extends BasePage {
         super(driver, wait);
     }
 
-//   Leaving the waiter method as a separate one, just to show the other way of using it
-    public void waitUntilMessagePopUpIsVisible(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("v-snack__content")));
+//   Leaving the waiter methods separately, as per documentation and to show the other way of using it as well
+    public void waitUntilErrorMessagePopUpIsVisible(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("error")));
     }
 
-    public WebElement getMessagePopUpTextElement(){
-       return driver.findElement(By.xpath("//*[@class='v-snack__content']//li"));
+    public void waitUntilSuccessMessagePopUpIsVisible(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("success")));
+    }
+
+    public WebElement getErrorMessagePopUpTextElement(){
+       return driver.findElement(By.xpath("//div[contains(@class, 'error')]/div[@class='v-snack__content']"));
+    }
+
+    public WebElement getSuccessMessagePopUpTextElement(){
+        return driver.findElement(
+                By.xpath("//div[contains(@class, 'success')]/div[@class='v-snack__content']"));
     }
 
     public WebElement getMessagePopUpCloseButton(){
