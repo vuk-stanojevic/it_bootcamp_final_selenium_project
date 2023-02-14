@@ -37,10 +37,11 @@ public class ProfileTests extends BaseTest {
 //      It is necessary to wait for the page to finish loading before taking further actions
         wait.until(ExpectedConditions.urlContains("/home"));
         navPage.getMyProfileButton().click();
-        profilePage.waitUntilLoadingIsComplete();
+//        profilePage.waitUntilLoadingIsComplete();
+        wait.until(ExpectedConditions.elementToBeClickable(profilePage.getSaveButton()));
         Assert.assertEquals(profilePage.getEmailInputField().getAttribute("type"), "email",
                 "The email input field's type attribute is not 'email'");
-        Assert.assertEquals(profilePage.getDisabledInputFieldAttribute("disabled"), "disabled",
+        Assert.assertEquals(profilePage.getDisabledInputFieldAttribute(), "disabled",
                 "The email input field's disabled attribute is not 'disabled'");
         Assert.assertEquals(profilePage.getNameInputField().getAttribute("type"), "text",
                 "The name input field's type attribute is not 'text'");

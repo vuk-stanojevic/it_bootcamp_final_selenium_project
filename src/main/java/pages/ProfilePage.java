@@ -45,22 +45,12 @@ public class ProfilePage extends BasePage {
         return driver.findElement(By.className("btnSave"));
     }
 
-    public String getDisabledInputFieldAttribute(String attribute){
+    public String getDisabledInputFieldAttribute(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        if(attribute.equals("value")) {
-            return (String) js.executeScript("return arguments[0].getAttribute('value');", getEmailInputField());
-        } else {
-            return (String) js.executeScript("return arguments[0].getAttribute('disabled');", getEmailInputField());
-        }
+        return (String) js.executeScript("return arguments[0].getAttribute('disabled');", getEmailInputField());
     }
 
     public void waitUntilLoadingIsComplete(){
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("v-card__text")));
     }
-
-//    public void waitProgressBarInvisible() {
-//        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(
-//                By.xpath("//div[@role='progressbar']"))));
-//    }
-
 }
