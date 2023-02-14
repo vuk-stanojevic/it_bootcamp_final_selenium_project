@@ -23,7 +23,7 @@ public abstract class BaseTest {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
-
+    
     protected String baseUrl = "https://vue-demo.daniel-avellaneda.com";
 
     protected LoginPage loginPage;
@@ -31,6 +31,8 @@ public abstract class BaseTest {
     protected SignUpPage signUpPage;
     protected CitiesPage citiesPage;
     protected MessagePopUpPage messagePopUpPage;
+    protected ProfilePage profilePage;
+    protected LandingPage landingPage;
 
     @BeforeClass
     public void setup() {
@@ -45,6 +47,8 @@ public abstract class BaseTest {
         signUpPage = new SignUpPage(driver, wait);
         citiesPage = new CitiesPage(driver, wait);
         messagePopUpPage = new MessagePopUpPage(driver, wait);
+        profilePage = new ProfilePage(driver, wait);
+        landingPage = new LandingPage(driver, wait);
     }
 
     @BeforeMethod
@@ -67,5 +71,4 @@ public abstract class BaseTest {
         Thread.sleep(5000);
         driver.quit();
     }
-
 }

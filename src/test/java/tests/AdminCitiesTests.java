@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 public class AdminCitiesTests extends BaseTest {
 
     @Test(priority = 1)
-    @Description("Test Case 1 - Verify that the admin cities page loads")
-    public void checkAdminCitiesPageAndCitiesList(){
+    @Description("Test #1 - Visits the admin cities page and list cities")
+    public void visitsTheAdminCitiesPageAndListCities(){
         navPage.getLoginLink().click();
         loginPage.getEmailInputField().sendKeys("admin@admin.com");
         loginPage.getPasswordInputField().sendKeys("12345");
@@ -23,8 +23,8 @@ public class AdminCitiesTests extends BaseTest {
     }
 
     @Test(priority = 2)
-    @Description("Test Case 2 - Verify that the New Item input field has the correct type")
-    public void checkNewItemInputFieldType(){
+    @Description("Test #2 - Checks input types for create/edit new city")
+    public void checksInputTypesForCreateEditNewCity(){
         navPage.getAdminButton().click();
         navPage.getCitiesLink().click();
         citiesPage.getNewItemButton().click();
@@ -34,8 +34,8 @@ public class AdminCitiesTests extends BaseTest {
     }
 
     @Test(priority = 3)
-    @Description("Test Case 3 - Verify that user can create a new city")
-    public void checkUserCreatesNewCity() {
+    @Description("Test #3 - Create new city")
+    public void createNewCity() {
         navPage.getAdminButton().click();
         navPage.getCitiesLink().click();
         citiesPage.getNewItemButton().click();
@@ -48,14 +48,14 @@ public class AdminCitiesTests extends BaseTest {
     }
 
     @Test(priority = 4)
-    @Description("Test Case 4 - Verify that user can edit a city")
-    public void checkUserEditsCity() {
+    @Description("Test #4 - Edit city")
+    public void editCity() {
         navPage.getAdminButton().click();
         navPage.getCitiesLink().click();
         citiesPage.getSearchInput().sendKeys("Vuk Stanojevic's city");
         citiesPage.waitUntilNumberOfRows(1);
         citiesPage.getEditButtonFromRow(1).click();
-//      .clear() does not work for this field, so the actions below are a workaround
+//      .clear() does not work on this website, so the actions below are a necessary workaround
         citiesPage.getInputFieldNewEditDialog().sendKeys(Keys.CONTROL + "a");
         citiesPage.getInputFieldNewEditDialog().sendKeys(Keys.BACK_SPACE);
         citiesPage.getInputFieldNewEditDialog().sendKeys("Vuk Stanojevic's city Edited");
@@ -66,8 +66,8 @@ public class AdminCitiesTests extends BaseTest {
     }
 
     @Test(priority = 5)
-    @Description("Test Case 5 - Verify that user can edit a city")
-    public void checkUserSearchesForCity() {
+    @Description("Test #5 - Search city")
+    public void searchCity() {
         navPage.getAdminButton().click();
         navPage.getCitiesLink().click();
         citiesPage.getSearchInput().sendKeys("Vuk Stanojevic's city");
@@ -78,8 +78,8 @@ public class AdminCitiesTests extends BaseTest {
     }
 
     @Test(priority = 6)
-    @Description("Test Case 6 - Verify that user can delete a city")
-    public void checkUserDeletesCity() {
+    @Description("Test #6 - Delete city")
+    public void deleteCity() {
         navPage.getAdminButton().click();
         navPage.getCitiesLink().click();
         citiesPage.getSearchInput().sendKeys("Vuk Stanojevic's city");

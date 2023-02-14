@@ -7,21 +7,19 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
 
-
     @Test(priority = 1)
-    @Description("Test Case 1 - Verify that the user can load the Login page")
-    public void loadLoginPage(){
+    @Description("Test #1 - Visits the login page")
+    public void visitsTheLoginPage(){
         navPage.getLanguageButton().click();
         navPage.getEnglishLanguageButton().click();
         navPage.getLoginLink().click();
-//      Leaving driver.getCurrentUrl() as is, since it would not make any difference to create a new method for that
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "The URL does not contain the '/login' part");
     }
 
     @Test(priority = 2)
-    @Description("Test Case 2 - Verify that input fields on Login page have the correct types")
-    public void checkLoginPageInputFieldType(){
+    @Description("Test #2 - Checks input types")
+    public void checksInputTypes(){
         navPage.getLoginLink().click();
         Assert.assertEquals(loginPage.getEmailInputField().getAttribute("type"), "email",
                 "The email input field's type attribute is not 'email'");
@@ -30,8 +28,8 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(priority = 3)
-    @Description("Test Case 3 - Verify that Login page displays an error when the user does not exist")
-    public void checkErrorWhenUserDoesNotExist(){
+    @Description("Test #3 - Displays errors when user does not exist")
+    public void displaysErrorsWhenUserDoesNotExist(){
         navPage.getLoginLink().click();
         loginPage.getEmailInputField().sendKeys("non-existing-user@gmail.com");
         loginPage.getPasswordInputField().sendKeys("password123");
@@ -44,8 +42,8 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(priority = 4)
-    @Description("Test Case 4 - Verify that Login page displays an error when the password is wrong")
-    public void checkErrorWhenUserPasswordIsWrong(){
+    @Description("Test #4 - Displays errors when password is wrong")
+    public void displaysErrorWhenPasswordIsWrong(){
         navPage.getLoginLink().click();
         loginPage.getEmailInputField().sendKeys("admin@admin.com");
         loginPage.getPasswordInputField().sendKeys("password123");
@@ -58,8 +56,8 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(priority = 5)
-    @Description("Test Case 5 - Verify that user can successfully log in and is redirected to Home page")
-    public void checkSuccessfulLoginHomepageRedirection() { //throws InterruptedException {
+    @Description("Test #5 - Login")
+    public void login() {
         navPage.getLoginLink().click();
         loginPage.getEmailInputField().sendKeys("admin@admin.com");
         loginPage.getPasswordInputField().sendKeys("12345");
@@ -75,18 +73,9 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(priority = 6)
-    @Description("Test Case 6 - Verify that the Logout button is visible")
-    public void checkIfLogoutButtonIsVisible() { // throws InterruptedException {
-//        If this test is run separately from the previous test, then the following 4 lines need to be added because
-//        the user needs to log in first:
-//        navPage.getLoginLink().click();
-//        loginPage.getEmailInputField().sendKeys("admin@admin.com");
-//        loginPage.getPasswordInputField().sendKeys("12345");
-//        loginPage.getLoginButton().click();
+    @Description("Test #6 - Logout")
+    public void logout() {
         wait.until(ExpectedConditions.visibilityOf(navPage.getLogoutButton()));
-//      Same as in previous test, the alternative to the waiter is to add a Thread.sleep with an Assert after it
-//        Thread.sleep(2000);
-//        Assert.assertTrue(navPage.getLogoutButton().isDisplayed(), "The Logout button is not visible");
         navPage.getLogoutButton().click();
     }
 }
