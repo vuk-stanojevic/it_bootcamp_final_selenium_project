@@ -19,7 +19,7 @@ public class CitiesPage extends BasePage {
         return driver.findElement(By.id("search"));
     }
 
-//  Making separate waiter methods, as per documentation
+//  Making stand-alone waiter methods, as per documentation
     public void waitUntilEditItemNewItemDialogAppears(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dlgNewEditItem")));
     }

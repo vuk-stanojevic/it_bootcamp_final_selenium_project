@@ -66,7 +66,6 @@ public class NavPage extends BasePage {
         return driver.findElement(By.className("btnLocaleActivation"));
     }
 
-
 //  Same as previously, merging the waiter for the language menu into the language buttons
 //    public void waitUntilLanguageMenuIsVisible(){
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='menu']")));
@@ -74,27 +73,26 @@ public class NavPage extends BasePage {
 
     public WebElement getEnglishLanguageButton(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='menu']")));
-        return driver.findElement(By.id("list-item-73"));
+        return driver.findElement(By.className("btnEN"));
     }
 
     public WebElement getSpanishLanguageButton(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='menu']")));
-        return driver.findElement(By.id("list-item-75"));
+        return driver.findElement(By.className("btnES"));
     }
 
     public WebElement getFrenchLanguageButton(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='menu']")));
-        return driver.findElement(By.id("list-item-77"));
+        return driver.findElement(By.className("btnFR"));
     }
 
     public WebElement getChineseLanguageButton(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='menu']")));
-        return driver.findElement(By.id("list-item-79"));
+        return driver.findElement(By.className("btnCN"));
     }
 
     public WebElement getUkrainianLanguageButton(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='menu']")));
-        return driver.findElement(By.id("list-item-81"));
+        return driver.findElement(By.className("btnUA"));
     }
-
 }
