@@ -20,7 +20,7 @@ public class NavPage extends BasePage {
         return driver.findElement(By.xpath("//div[@class='v-toolbar__items']/a[2]"));
     }
 
-    public WebElement getMyProfileButton(){
+    public WebElement getMyProfileLink(){
         return driver.findElement(By.className("btnProfile"));
     }
 

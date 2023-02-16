@@ -49,8 +49,4 @@ public class ProfilePage extends BasePage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return (String) js.executeScript("return arguments[0].getAttribute('disabled');", getEmailInputField());
     }
-
-    public void waitUntilLoadingIsComplete(){
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("v-card__text")));
-    }
 }

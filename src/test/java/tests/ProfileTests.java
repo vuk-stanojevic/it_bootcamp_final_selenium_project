@@ -36,8 +36,7 @@ public class ProfileTests extends BaseTest {
         loginPage.getLoginButton().click();
 //      It is necessary to wait for the page to finish loading before taking further actions
         wait.until(ExpectedConditions.urlContains("/home"));
-        navPage.getMyProfileButton().click();
-//        profilePage.waitUntilLoadingIsComplete();
+        navPage.getMyProfileLink().click();
         wait.until(ExpectedConditions.elementToBeClickable(profilePage.getSaveButton()));
         Assert.assertEquals(profilePage.getEmailInputField().getAttribute("type"), "email",
                 "The email input field's type attribute is not 'email'");
@@ -45,6 +44,8 @@ public class ProfileTests extends BaseTest {
                 "The email input field's disabled attribute is not 'disabled'");
         Assert.assertEquals(profilePage.getNameInputField().getAttribute("type"), "text",
                 "The name input field's type attribute is not 'text'");
+        Assert.assertEquals(profilePage.getPhoneInputField().getAttribute("type"), "tel",
+                "The phone input field's type attribute is not 'tel'");
         Assert.assertEquals(profilePage.getCityInputField().getAttribute("type"), "text",
                 "The city input field's type attribute is not 'text'");
         Assert.assertEquals(profilePage.getCountryInputField().getAttribute("type"), "text",
@@ -53,8 +54,6 @@ public class ProfileTests extends BaseTest {
                 "The Twitter input field's type attribute is not 'url'");
         Assert.assertEquals(profilePage.getGithubInputField().getAttribute("type"), "url",
                 "The GitHub input field's type attribute is not 'url'");
-        Assert.assertEquals(profilePage.getPhoneInputField().getAttribute("type"), "tel",
-                "The phone input field's type attribute is not 'tel'");
         navPage.getLogoutButton().click();
     }
 
@@ -67,7 +66,7 @@ public class ProfileTests extends BaseTest {
         loginPage.getLoginButton().click();
 //      It is necessary to wait for the page to finish loading before taking further actions
         wait.until(ExpectedConditions.urlContains("/home"));
-        navPage.getMyProfileButton().click();
+        navPage.getMyProfileLink().click();
 
 //      .clear() does not work for these fields, so the actions below are a necessary workaround
         profilePage.getNameInputField().click();
@@ -96,6 +95,7 @@ public class ProfileTests extends BaseTest {
                         .getText().contains("Profile saved successfuly"),
                 "The pop up message does not contain the 'Profile saved successfuly' [sic] part");
 
+//      Verifications below are done per documentation:
         Assert.assertEquals(profilePage.getNameInputField().getAttribute("value"), "Vuk Stanojevic",
                 "Name is not the same as entered");
         Assert.assertEquals(profilePage.getPhoneInputField().getAttribute("value"), "+38161283223",

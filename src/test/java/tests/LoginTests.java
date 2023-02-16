@@ -68,8 +68,7 @@ public class LoginTests extends BaseTest {
 //      The alternative to waiter would be to add a Thread.sleep and an Assert after it, since it is necessary to wait
 //      until the page loads. That way we would get a precisely defined error message if the test fails.
 //        Thread.sleep(2000);
-//        Assert.assertTrue(driver.getCurrentUrl().contains("/home"),
-//                "The URL does not contain the '/home' part");
+//        Assert.assertTrue(driver.getCurrentUrl().contains("/home"), "The URL does not contain the '/home' part");
     }
 
     @Test(priority = 6)
